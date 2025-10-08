@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1759859533 source:c:\users\asus\onedrive\desktop\ds pbl\traffic\processing.c
+	<stdio.h>
+	<string.h>
+	"processing.h"
+
+1759912934 c:\users\asus\onedrive\desktop\ds pbl\traffic\processing.h
+	"dataingetion.h"
+
+1759859632 c:\users\asus\onedrive\desktop\ds pbl\traffic\dataingetion.h
+
+1759859503 source:c:\users\asus\onedrive\desktop\ds pbl\traffic\report.c
+	<stdio.h>
+	<string.h>
+	"report.h"
+
+1759912943 c:\users\asus\onedrive\desktop\ds pbl\traffic\report.h
+	"dataingetion.h"
+
+1759912953 source:c:\users\asus\onedrive\desktop\ds pbl\traffic\dataingetion.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dataingetion.h"
+
+1759912962 source:c:\users\asus\onedrive\desktop\ds pbl\traffic\main.c
+	<stdio.h>
+	<stdlib.h>
+	"dataingetion.h"
+	"processing.h"
+	"report.h"
+

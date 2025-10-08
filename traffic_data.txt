@@ -1,0 +1,5 @@
+1,Zone-A,78,45.60,Moderate
+2,Zone-B,54,29.80,High
+3,Zone-C,110,62.20,Low
+4,Zone-D,33,25.50,High
+5,Zone-E,80,40.00,Moderate
