@@ -1,34 +1,29 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "dataingetion.h"
+#include "etl.h"
 #include "processing.h"
 #include "report.h"
 
 int main() {
     TrafficData data[100];
-    int n = 0;
+    int n;
 
-    printf("\n===== SMART STREAM: TRAFFIC FLOW SYSTEM =====\n");
+    printf("\n--- SWIFTWAY TRAFFIC SYSTEM ---\n");
 
-    // Automatically collect data at startup
-    printf("\nCollecting live traffic data (from CSV)...\n");
+    // Extract
     n = collectTrafficData(data);
     if (n == 0) {
-        printf("\nError: Unable to collect traffic data. Exiting program.\n");
+        printf("No data found. Exiting.\n");
         return 1;
     }
 
-    printf("Traffic data collected successfully! (%d records)\n", n);
+    // Transform (clean)
+    cleanTrafficData(data, &n);
 
-    // Automatically analyze
-    printf("\nAnalyzing and predicting congestion levels...\n");
+    // Load + Analyze + Report
     analyzeTraffic(data, n);
-    printf("Traffic analysis completed.\n");
-
-    // Automatically display + save report
-    printf("\nGenerating traffic report...\n");
     displayReport(data, n);
 
-    printf("\nSystem execution complete.\n");
+    printf("\nProcess finished successfully.\n");
     return 0;
 }

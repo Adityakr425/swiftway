@@ -1,6 +1,6 @@
 location,vehicleCount,avgSpeed
-Zone-A,78,45.6
-Zone-B,54,29.8
-Zone-C,110,62.2
-Zone-D,33,25.5
-Zone-E,80,40.0
+ZoneA,78,45.6
+ZoneB,0,29.8
+ZoneC,110,300
+ZoneD,33,-5
+ZoneE,80,40.0

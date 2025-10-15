@@ -35,6 +35,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="dataingetion.h" />
+		<Unit filename="etl.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="etl.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>

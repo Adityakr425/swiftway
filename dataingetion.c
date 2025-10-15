@@ -3,47 +3,26 @@
 #include <string.h>
 #include "dataingetion.h"
 
-static void trim_newline(char *s) {
-    size_t l = strlen(s);
-    while (l > 0 && (s[l-1] == '\n' || s[l-1] == '\r')) {
-        s[l-1] = '\0';
-        l--;
-    }
-}
-
 int collectTrafficData(TrafficData data[]) {
-    FILE *fp = fopen("trafficinput.csv", "r");  // updated file name
-    if (!fp) {
-        printf("\nError: Could not open trafficinput.csv\n");
+    FILE *f = fopen("trafficinput.csv", "r");
+    if (!f) {
+        printf("Error opening trafficinput.csv\n");
         return 0;
     }
 
-    char line[256];
+    char line[100];
     int i = 0;
+    fgets(line, sizeof(line), f); // skip header
 
-    // Skip header
-    fgets(line, sizeof(line), fp);
-
-    while (fgets(line, sizeof(line), fp) && i < 100) {
-        trim_newline(line);
-        char *token = strtok(line, ",");
-        if (!token) continue;
-        strncpy(data[i].location, token, sizeof(data[i].location) - 1);
-        data[i].location[sizeof(data[i].location) - 1] = '\0';
-
-        token = strtok(NULL, ",");
-        if (!token) continue;
-        data[i].vehicleCount = atoi(token);
-
-        token = strtok(NULL, ",");
-        if (!token) continue;
-        data[i].avgSpeed = (float)atof(token);
-
+    while (fgets(line, sizeof(line), f)) {
+        sscanf(line, "%[^,],%d,%f", data[i].location,
+               &data[i].vehicleCount, &data[i].avgSpeed);
         data[i].id = i + 1;
-        strcpy(data[i].congestionLevel, "Not Analyzed");
+        strcpy(data[i].congestion, "Not Checked");
         i++;
     }
 
-    fclose(fp);
+    fclose(f);
+    printf("Data extraction complete. %d records loaded.\n", i);
     return i;
 }

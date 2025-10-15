@@ -6,7 +6,7 @@ typedef struct {
     char location[30];
     int vehicleCount;
     float avgSpeed;
-    char congestionLevel[20];
+    char congestion[15];
 } TrafficData;
 
 int collectTrafficData(TrafficData data[]);
